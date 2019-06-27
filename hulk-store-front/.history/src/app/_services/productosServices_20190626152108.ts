@@ -1,0 +1,14 @@
+import { Injectable } from '@angular/core';
+import { Http, Headers, Response, RequestOptions } from '@angular/http';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+
+
+import { Observable } from 'rxjs';
+import 'rxjs/add/operator/map'
+
+@Injectable()
+export class ProductosService{
+    
+
+    
+}

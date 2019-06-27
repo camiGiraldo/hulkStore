@@ -1,0 +1,102 @@
+$topnav-background-color:#65a8fb;
+:host {
+    display: block;
+}
+
+.login-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    background: $topnav-background-color;
+    text-align: center;
+    color: #fff;
+    padding: 3em;
+    .col-lg-4 {
+        padding: 0;
+    }
+    .input-lg {
+        height: 46px;
+        padding: 10px 16px;
+        font-size: 18px;
+        line-height: 1.3333333;
+        border-radius: 0;
+    }
+    .input-underline {
+        //background: 0 0;
+        //border: none;
+        //box-shadow: none;
+        //border-bottom: 2px solid #65a8fb;;
+        color: #04529d;
+        border-radius: 0;
+    }
+    .input-underline:focus {
+        border-bottom: 3px solid #04529d;
+        box-shadow: none;
+    }
+    .rounded-btn {
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+        color: rgba(255, 255, 255, 0.8);
+        background: rgb(12, 60, 4);
+        border: 2px solid rgba(255, 255, 255, 0.8);
+        font-size: 18px;
+        line-height: 40px;
+        padding: 0 25px;
+    }
+    .rounded-btn:hover,
+    .rounded-btn:focus,
+    .rounded-btn:active,
+    .rounded-btn:visited {
+        color: rgba(255, 255, 255, 1);
+        border: 3px solid rgba(255, 255, 255, 1);
+        outline: none;
+    }
+    h1 {
+        color: #ffffff;
+        font-weight: 600;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 34px;
+        small {
+            color: rgba(255, 255, 255, 0.7);
+        }
+    }
+    .form-group {
+        padding: 8px 0;
+        input::-webkit-input-placeholder {
+            color: rgb(101, 168, 251) !important;
+        }
+        input:-moz-placeholder {
+            /* Firefox 18- */
+            color: rgb(101, 168, 251) !important;
+        }
+        input::-moz-placeholder {
+            /* Firefox 19+ */
+            color: rgb(101, 168, 251) !important;
+        }
+        input:-ms-input-placeholder {
+            color: rgb(101, 168, 251) !important;
+        }
+    }
+    .form-content {
+        padding: 20px 0;
+    }
+    .user-avatar {
+        width: 120px;
+    }
+    .cont-login {
+        background: rgba(5, 31, 0, 0.99);
+        padding: 0px 21px;
+        border-radius: 120px;
+    }
+    #myVideo {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+    }
+}

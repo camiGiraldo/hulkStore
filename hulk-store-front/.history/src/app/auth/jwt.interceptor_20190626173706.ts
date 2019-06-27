@@ -1,0 +1,24 @@
+import { HttpInterceptor, HttpSentEvent, HttpHeaderResponse, HttpHandler, HttpEvent, HttpRequest, HttpHeaders, HttpClient, HttpErrorResponse, HttpResponse } from "@angular/common/http";
+import { Observable } from "rxjs/Observable";
+import { Injectable } from "@angular/core";
+import { AuthenticationService } from "../_services/authentication.service";
+
+@Injectable()
+export class TokenInterceptor implements HttpInterceptor {
+  
+    constructor(private http: HttpClient){  
+    }
+    
+    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        const authReq = req.clone({
+            headers: new HttpHeaders({
+              'Content-Type':  'application/json',
+              'Authorization': 'my-auth-token'
+            })
+          });
+        
+          console.log('Intercepted HTTP call', authReq);
+        
+          return next.handle(authReq);
+    }
+}
