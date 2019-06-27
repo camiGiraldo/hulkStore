@@ -10,6 +10,7 @@ import { TokenInterceptor } from './auth/jwt.interceptor';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AuthenticationService } from './_services/authentication.service';
+import { FacultadesService } from './_services/facultadesService';
 import { ProductosService } from './_services/productosService';
 
 
@@ -58,6 +59,7 @@ export function createTranslateLoader(http: HttpClient) {
     ],
     providers: [AuthGuard,
       AuthenticationService,
+      FacultadesService,
       ProductosService,
       VentasService,
       {

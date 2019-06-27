@@ -20,7 +20,7 @@ public class ProductService {
 	@Autowired
 	ProductRepository productRepository;
 	
-private EntityManager entityManager;
+	private EntityManager entityManager;
 	
 	@Autowired
 	public ProductService(EntityManager theEntityManager) {

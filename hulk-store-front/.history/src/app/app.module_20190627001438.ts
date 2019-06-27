@@ -10,6 +10,7 @@ import { TokenInterceptor } from './auth/jwt.interceptor';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AuthenticationService } from './_services/authentication.service';
+import { FacultadesService } from './_services/facultadesService';
 import { ProductosService } from './_services/productosService';
 
 
@@ -25,7 +26,7 @@ import {
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
-import { VentasService } from './_services/ventasService';
+import { VentasService } from '../../.history/src/app/_services/ventasService_20190627000748';
 
 // AoT requires an exported function for factories
 export function createTranslateLoader(http: HttpClient) {
@@ -58,6 +59,7 @@ export function createTranslateLoader(http: HttpClient) {
     ],
     providers: [AuthGuard,
       AuthenticationService,
+      FacultadesService,
       ProductosService,
       VentasService,
       {

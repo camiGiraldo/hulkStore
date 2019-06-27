@@ -10,6 +10,7 @@
 
 # Springboot-Backend
 - Se implementaron las siguientes tecnologias: 
+- Java 8
 - SpringBoot MVC
 - RESTFull
 - JSON Web Token (jwt)
@@ -34,7 +35,8 @@
 ## Instalacion componente web
 - se debe tener instalado node.js
 - clonar el proyecto
+- nos situamos en el directorio raiz "hullk-store-web/"
 - se debe ejecutar el comando " npm -install " para obtener los node_modules
-- nos situamos en el directorio raiz y se ejecuta el comando " ng serve "
+- se ejecuta el comando " ng serve " para iniciar el servidor
 - en el browser de preferencia accedemos a la URL hhtp://localhost:4200
 - usuario: cagiraldo, contraseña: 123456

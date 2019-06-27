@@ -1,0 +1,17 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Ventas'" [icon]="'fa-building'"></app-page-header>
+    <div class="cont-actions">
+        <div class="fac-selec">Producto seleccionado: <strong>{{ message }}</strong></div>
+
+        <div *ngIf="idEdit" class="flt-button-action" title="Editar" (click)="open(content,'edit')">
+            <i class="fa fa-edit"></i>
+        </div>
+        <div *ngIf="!idEdit" class="flt-button-action" title="Editar" (click)="open(content,'edit')">
+            <i class="fa fa-edit"></i>
+        </div>
+        <div class="flt-button-action" title="Crear Venta" (click)="open(content,'new')">
+            <i class="fa fa-plus"></i>
+        </div>
+    </div>
+
+</div>

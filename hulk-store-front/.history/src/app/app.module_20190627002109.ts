@@ -59,7 +59,7 @@ export function createTranslateLoader(http: HttpClient) {
     providers: [AuthGuard,
       AuthenticationService,
       ProductosService,
-      VentasService,
+      VentasService
       {
         provide: HTTP_INTERCEPTORS,
         useClass: TokenInterceptor,
