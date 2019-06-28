@@ -59,14 +59,13 @@ export class VentasComponent implements OnInit, AfterViewInit {
   productJson:string ='';
 
   /**Listado de productos a vender */
-  listProductToSell:Producto[] = [];
-  listProducts:Producto[] = [];
+  listProductToSell:Producto[];
+  listProducts:Producto[];
 
   /*Variables id para el producto seleccionado */
   productoSeleccionado:Producto;
   productoVendido:ProductoVendido;
-  
-  cantidad:number;
+
 
 constructor(private zone: NgZone, private modalService: NgbModal, private sellService: VentasService, private prodService: ProductosService) { 
     this.idEdit = '';
@@ -337,7 +336,7 @@ constructor(private zone: NgZone, private modalService: NgbModal, private sellSe
     agregarProducto(){
       debugger
       if(this.productoSeleccionado){
-         let a = new Producto(this.productoSeleccionado.id,this.productoSeleccionado.name, this.cantidad);
+         let a = new Producto(this.productoSeleccionado.id,this.productoSeleccionado.name,this.productoSeleccionado.stock);
          this.listProductToSell.push(a);
       }
       

@@ -59,14 +59,13 @@ export class VentasComponent implements OnInit, AfterViewInit {
   productJson:string ='';
 
   /**Listado de productos a vender */
-  listProductToSell:Producto[] = [];
+  listProductToSell:ProductoVendido[] = [];
   listProducts:Producto[] = [];
 
   /*Variables id para el producto seleccionado */
   productoSeleccionado:Producto;
   productoVendido:ProductoVendido;
-  
-  cantidad:number;
+
 
 constructor(private zone: NgZone, private modalService: NgbModal, private sellService: VentasService, private prodService: ProductosService) { 
     this.idEdit = '';

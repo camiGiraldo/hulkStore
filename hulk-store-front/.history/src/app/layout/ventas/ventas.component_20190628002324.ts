@@ -58,15 +58,16 @@ export class VentasComponent implements OnInit, AfterViewInit {
   totalVenta:number =0;
   productJson:string ='';
 
+  cantidad:number;
+
   /**Listado de productos a vender */
-  listProductToSell:Producto[] = [];
-  listProducts:Producto[] = [];
+  listProductToSell:ProductoVendido[];
+  listProducts:Producto[];
 
   /*Variables id para el producto seleccionado */
   productoSeleccionado:Producto;
   productoVendido:ProductoVendido;
-  
-  cantidad:number;
+
 
 constructor(private zone: NgZone, private modalService: NgbModal, private sellService: VentasService, private prodService: ProductosService) { 
     this.idEdit = '';
@@ -75,7 +76,7 @@ constructor(private zone: NgZone, private modalService: NgbModal, private sellSe
       id : ''
     }
     this.message = 'No se ha seleccionado una fila';
-    
+
   }
 
   ngAfterViewInit(): void {
@@ -335,10 +336,13 @@ constructor(private zone: NgZone, private modalService: NgbModal, private sellSe
     }
 
     agregarProducto(){
-      debugger
+
+      let productoVendido;
       if(this.productoSeleccionado){
-         let a = new Producto(this.productoSeleccionado.id,this.productoSeleccionado.name, this.cantidad);
-         this.listProductToSell.push(a);
+         productoVendido.codigo=this.productoSeleccionado.id;
+         productoVendido.name=this.productoSeleccionado.name;
+         productoVendido.cantidad = this.cantidad;
+         this.listProductToSell.push(productoVendido);
       }
       
 

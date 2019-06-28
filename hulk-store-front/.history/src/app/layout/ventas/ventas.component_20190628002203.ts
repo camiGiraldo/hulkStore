@@ -22,9 +22,17 @@ export interface Respuesta {
 }
 
 export interface ProductoVendido{
-  codigo:number;
+  id:number;
   name:string;
-  cantidad:number;
+  stock:number;
+  dateCreated:Date;
+}
+
+export interface ProductoDto{
+  id:number;
+  name:string;
+  stock:number;
+  dateCreated:Date;
 }
 
 @Component({
@@ -58,15 +66,16 @@ export class VentasComponent implements OnInit, AfterViewInit {
   totalVenta:number =0;
   productJson:string ='';
 
+  cantidad:number;
+
   /**Listado de productos a vender */
-  listProductToSell:Producto[] = [];
-  listProducts:Producto[] = [];
+  listProductToSell:ProductoVendido[];
+  listProducts:ProductoDto[];
 
   /*Variables id para el producto seleccionado */
   productoSeleccionado:Producto;
   productoVendido:ProductoVendido;
-  
-  cantidad:number;
+
 
 constructor(private zone: NgZone, private modalService: NgbModal, private sellService: VentasService, private prodService: ProductosService) { 
     this.idEdit = '';
@@ -75,7 +84,7 @@ constructor(private zone: NgZone, private modalService: NgbModal, private sellSe
       id : ''
     }
     this.message = 'No se ha seleccionado una fila';
-    
+    this.productoVendido = new ProductoVendido(); 
   }
 
   ngAfterViewInit(): void {
@@ -321,7 +330,7 @@ constructor(private zone: NgZone, private modalService: NgbModal, private sellSe
         (val) => {
           
              let respuesta = val as Respuesta;
-             this.listProducts = respuesta.data as Producto[];
+             this.listProducts = respuesta.data as ProductoDto[];
              
         },
         error => {
@@ -336,9 +345,12 @@ constructor(private zone: NgZone, private modalService: NgbModal, private sellSe
 
     agregarProducto(){
       debugger
-      if(this.productoSeleccionado){
-         let a = new Producto(this.productoSeleccionado.id,this.productoSeleccionado.name, this.cantidad);
-         this.listProductToSell.push(a);
+      
+      let productSel = this.productoSeleccionado;
+      
+      if(productSel){
+       
+        this.listProductToSell.push(productSel);
       }
       
 
