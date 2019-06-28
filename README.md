@@ -1,6 +1,9 @@
 # Proyecto de prueba para TODO 1
 ## Autor: Camilo Giraldo
 
+# Faltantes
+-- generar la venta
+
 # El proyecto presenta una arquitectura de capas 
 - capa vista
 - capa de servicios
