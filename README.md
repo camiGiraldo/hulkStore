@@ -19,7 +19,7 @@
 - editor Eclipse JEE
 
 ## Ejecucion del back
-- se debe exportar la base de datos MYSQL hullstore.sql
+- se debe exportar la base de datos MYSQL hullkstore.sql
 - se ejecuta el servicio .jar que esta en el target del aplicativo
 - ejecutar desde eclipse como SpringBootAplication
 
