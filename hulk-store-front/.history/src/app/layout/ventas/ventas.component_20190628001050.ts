@@ -344,14 +344,11 @@ constructor(private zone: NgZone, private modalService: NgbModal, private sellSe
 
     agregarProducto(){
       debugger
-      let productoVendido:ProductoVendido;
+      let productoVendido:ProductoVendido = null;
       let productSel = this.productoSeleccionado;
       
       if(productSel){
-        productoVendido.codigo = productSel.id;
-        productoVendido.name = productSel.name;
-        productoVendido.cantidad = this.cantidad;
-        this.listProductToSell.push(productoVendido);
+        productoVendido.codigo = productSel.
       }
       
 

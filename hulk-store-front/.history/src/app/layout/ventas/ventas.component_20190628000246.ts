@@ -72,7 +72,7 @@ export class VentasComponent implements OnInit, AfterViewInit {
   listProducts:ProductoDto[];
 
   /*Variables id para el producto seleccionado */
-  productoSeleccionado:Producto;
+  productoSeleccionado:ProductoDto[];
   productoVendido:ProductoVendido;
 
 
@@ -344,14 +344,10 @@ constructor(private zone: NgZone, private modalService: NgbModal, private sellSe
 
     agregarProducto(){
       debugger
-      let productoVendido:ProductoVendido;
-      let productSel = this.productoSeleccionado;
-      
+      let productoVendido:ProductoVendido = null;
+      let productSel = this.productoSeleccionado as ProductoDto[];
       if(productSel){
-        productoVendido.codigo = productSel.id;
-        productoVendido.name = productSel.name;
-        productoVendido.cantidad = this.cantidad;
-        this.listProductToSell.push(productoVendido);
+        
       }
       
 

@@ -344,7 +344,7 @@ constructor(private zone: NgZone, private modalService: NgbModal, private sellSe
 
     agregarProducto(){
       debugger
-      let productoVendido:ProductoVendido;
+      let productoVendido:ProductoVendido = null;
       let productSel = this.productoSeleccionado;
       
       if(productSel){

@@ -27,13 +27,6 @@ export interface ProductoVendido{
   cantidad:number;
 }
 
-export interface ProductoDto{
-  id:number;
-  name:string;
-  stock:number;
-  dateCreated:Date;
-}
-
 @Component({
   selector: 'app-ventas',
   templateUrl: './ventas.component.html',
@@ -69,7 +62,7 @@ export class VentasComponent implements OnInit, AfterViewInit {
 
   /**Listado de productos a vender */
   listProductToSell:ProductoVendido[];
-  listProducts:ProductoDto[];
+  listProducts:Producto[];
 
   /*Variables id para el producto seleccionado */
   productoSeleccionado:Producto;
@@ -329,7 +322,7 @@ constructor(private zone: NgZone, private modalService: NgbModal, private sellSe
         (val) => {
           
              let respuesta = val as Respuesta;
-             this.listProducts = respuesta.data as ProductoDto[];
+             this.listProducts = respuesta.data as Producto[];
              
         },
         error => {
@@ -344,14 +337,13 @@ constructor(private zone: NgZone, private modalService: NgbModal, private sellSe
 
     agregarProducto(){
       debugger
-      let productoVendido:ProductoVendido;
-      let productSel = this.productoSeleccionado;
-      
+      let productoVendido:ProductoVendido = null;
+      let productSel = this.productoSeleccionado as Producto;
       if(productSel){
-        productoVendido.codigo = productSel.id;
-        productoVendido.name = productSel.name;
-        productoVendido.cantidad = this.cantidad;
-        this.listProductToSell.push(productoVendido);
+         productoVendido.codigo=productSel.id
+         productoVendido.name=productSel.name;
+         productoVendido.cantidad = this.cantidad;
+         this.listProductToSell.push(productoVendido);
       }
       
 

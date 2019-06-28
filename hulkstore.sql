@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-06-2019 a las 06:58:31
+-- Tiempo de generación: 28-06-2019 a las 07:14:58
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.1.28
 
@@ -32,7 +32,7 @@ CREATE TABLE `product` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `stock` int(11) NOT NULL,
-  `date_created` date NOT NULL
+  `date_created` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -40,8 +40,8 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `stock`, `date_created`) VALUES
-(1, 'batman', 10, '2019-06-26'),
-(2, 'Historieta', 15, '2019-06-27'),
+(1, 'batman', 40, '2019-06-27'),
+(2, 'Historieta', 35, '2019-06-27'),
 (3, 'Espada laser', 20, '2019-06-27');
 
 -- --------------------------------------------------------
@@ -75,6 +75,13 @@ CREATE TABLE `sell` (
   `product_json` text NOT NULL,
   `date_created` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `sell`
+--
+
+INSERT INTO `sell` (`id`, `total_sell`, `product_json`, `date_created`) VALUES
+(1, 10000, '[{\"id\":1,\"cantidad\":3,\"name\":\"batman\"},{\"id\":2,\"cantidad\":5,\"name\":\"historia\"}]', '2019-06-27');
 
 -- --------------------------------------------------------
 
@@ -183,7 +190,7 @@ ALTER TABLE `user_roles`
 -- AUTO_INCREMENT de la tabla `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
@@ -195,7 +202,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `sell`
 --
 ALTER TABLE `sell`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `tag`
