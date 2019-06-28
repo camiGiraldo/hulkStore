@@ -24,7 +24,7 @@ public class ProductController {
 	ProductService productService;
 	
 	@GetMapping("/list")
-	public ResponseHelper findAllTags() {
+	public ResponseHelper findAllProduct() {
 		ResponseHelper response = new ResponseHelper();
 		response.setData(productService.findAll());
 		return response;

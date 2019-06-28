@@ -23,6 +23,12 @@
 - se ejecuta el servicio .jar que esta en el target del aplicativo
 - ejecutar desde eclipse como SpringBootAplication
 
+## src/main/resource/application.properties
+encontramos las propiedades del aplicativo tales como:
+-- conexion a la base de datos
+-- tiempo expiracion del token
+-- generar ddl de base de datos (se recomienda tenerla en false ya que genera nuevamente la base de datos);
+
 # hulk-store-front
 - Se implementaron las siguientes tecnologias: 
 - framework Angular 4
