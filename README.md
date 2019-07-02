@@ -2,7 +2,7 @@
 ## Autor: Camilo Giraldo
 
 # Faltantes
--- generar la venta
+-- ajustar respuesta de front para la venta
 
 # El proyecto presenta una arquitectura de capas 
 - capa vista
