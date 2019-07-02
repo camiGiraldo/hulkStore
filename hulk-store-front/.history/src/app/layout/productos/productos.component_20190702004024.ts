@@ -2,6 +2,7 @@ import { AfterViewInit, Component, NgZone, OnInit, ViewChild, ViewEncapsulation}
 import { routerTransition } from '../../router.animations';
 import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs/Subject';
+import { Router } from "@angular/router"
 import {
     Validators,
     FormBuilder
@@ -9,7 +10,6 @@ import {
 import {BrowserModule} from '@angular/platform-browser';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { Router } from "@angular/router";
 import * as $ from 'jquery';
 import { environment } from '../../../environments/environment';
 import { ProductosService } from '../../_services/productosService';
@@ -57,7 +57,7 @@ export class ProductosComponent implements OnInit, AfterViewInit {
   namePro:string ='';
   cantidad:any ='';
 
-  constructor(private zone: NgZone, private modalService: NgbModal, private prodService: ProductosService,  private router: Router ) { 
+  constructor(private zone: NgZone, private modalService: NgbModal, private prodService: ProductosService, private router : Router) { 
     this.idEdit = '';
     this.url = environment.urlServicesProduct;
     this.cellSelect = {
@@ -98,10 +98,15 @@ export class ProductosComponent implements OnInit, AfterViewInit {
         headers: {
           'Authorization': 'Bearer '+ localStorage.getItem("token")
         },
-        "error": (err)=>{
-            this.router.navigate(['/login']);
+        "error": function(reason) {
+          debugger
+        },
+        "statusCode": {
+          401: function (xhr, error, thrown) {
+            rout
+            return false
+          }
         }
-        
     },
       columns: [{
         

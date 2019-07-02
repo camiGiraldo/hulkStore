@@ -27,9 +27,8 @@ export class TokenInterceptor implements HttpInterceptor {
             if (err.status !== 401) {
              return;
             }
-            localStorage.clear();
             this.router.navigate(['/login']);
-            
+            localStorage.clear();
           }
         }));
     }

@@ -3,7 +3,6 @@ import { Observable } from "rxjs/Observable";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router"
 import { AuthenticationService } from "../_services/authentication.service";
-import { tap } from "rxjs/operators";
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -21,16 +20,27 @@ export class TokenInterceptor implements HttpInterceptor {
         
           console.log('Intercepted HTTP call', authReq);
         
-          return next.handle(authReq).pipe( tap(() => {},
-          (err: any) => {
-          if (err instanceof HttpErrorResponse) {
-            if (err.status !== 401) {
-             return;
+          return next.handle(authReq).do((event: HttpResponse<any>)=>{
+            if(event instanceof HttpResponse){
+
             }
-            localStorage.clear();
-            this.router.navigate(['/login']);
-            
+          },
+          (err: any)=>{
+            if(err instanceof HttpErrorResponse){
+              if(err.status === 401){
+               
+              }
+            }
           }
-        }));
+
+          );
+
+
+
+
+          
+
+
+
     }
 }

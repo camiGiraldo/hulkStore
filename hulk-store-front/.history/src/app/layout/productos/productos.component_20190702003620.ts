@@ -9,7 +9,6 @@ import {
 import {BrowserModule} from '@angular/platform-browser';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { Router } from "@angular/router";
 import * as $ from 'jquery';
 import { environment } from '../../../environments/environment';
 import { ProductosService } from '../../_services/productosService';
@@ -57,7 +56,7 @@ export class ProductosComponent implements OnInit, AfterViewInit {
   namePro:string ='';
   cantidad:any ='';
 
-  constructor(private zone: NgZone, private modalService: NgbModal, private prodService: ProductosService,  private router: Router ) { 
+  constructor(private zone: NgZone, private modalService: NgbModal, private prodService: ProductosService) { 
     this.idEdit = '';
     this.url = environment.urlServicesProduct;
     this.cellSelect = {
@@ -98,10 +97,9 @@ export class ProductosComponent implements OnInit, AfterViewInit {
         headers: {
           'Authorization': 'Bearer '+ localStorage.getItem("token")
         },
-        "error": (err)=>{
-            this.router.navigate(['/login']);
+        "error": function(reason) {
+          debugger
         }
-        
     },
       columns: [{
         

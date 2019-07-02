@@ -3,7 +3,8 @@ import { Observable } from "rxjs/Observable";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router"
 import { AuthenticationService } from "../_services/authentication.service";
-import { tap } from "rxjs/operators";
+import { throwError, of } from 'rxjs';
+import { catchError } from "rxjs/operators/catchError";
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -27,9 +28,7 @@ export class TokenInterceptor implements HttpInterceptor {
             if (err.status !== 401) {
              return;
             }
-            localStorage.clear();
             this.router.navigate(['/login']);
-            
           }
         }));
     }

@@ -98,10 +98,9 @@ export class ProductosComponent implements OnInit, AfterViewInit {
         headers: {
           'Authorization': 'Bearer '+ localStorage.getItem("token")
         },
-        "error": (err)=>{
-            this.router.navigate(['/login']);
+        "error": function(reason) {
+          this.router
         }
-        
     },
       columns: [{
         
