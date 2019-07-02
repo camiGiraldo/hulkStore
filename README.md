@@ -49,3 +49,7 @@ encontramos las propiedades del aplicativo tales como:
 - se ejecuta el comando " ng serve " para iniciar el servidor
 - en el browser de preferencia accedemos a la URL hhtp://localhost:4200
 - usuario: cagiraldo, contraseña: 123456
+
+
+# Pruebas unitarias
+- Se implemento JUNIT Jupiter sobre los JPA
