@@ -122,12 +122,12 @@ export class VentasComponent implements OnInit, AfterViewInit {
       }, {
         title: 'Productos',
         data: function (d) {
-          debugger
+
           let json = JSON.parse(d.productJson);
           let cellReturn = "";
           for (let i = 0; i < json.length; i++) {
             let p = json[i];
-            cellReturn += `codigo: ${p.id}- Nombre: ${p.name} - Cantidad: ${p.stock} <br>`;
+            cellReturn += `codigo: ${p.id}- Nombre: ${p.name} - Cantidad: ${p.cantidad} <br>`;
           }
           return cellReturn;
 
@@ -167,14 +167,16 @@ export class VentasComponent implements OnInit, AfterViewInit {
 
       this.venta = new Venta(null,JSON.stringify(this.listProductToSell),this.totalVenta,new Date());
       let callBack = this.sellService.saveVenta(this.venta);
-      
+      /* let id = this.idEdit === '' ? null : parseInt(this.idEdit);
+       this.producto = new Producto(id,this.namePro,this.cantidad);
+       debugger
+       let callBack = this.prodService.saveProducto(this.producto);
        callBack.subscribe(
          (val) => {
            debugger
               let respuesta = val as Respuesta;
               this.modalRef.close();
               this.openNotification("","succes");
-              debugger 
               this.message = 'No se ha seleccionado una fila';
              
          },
@@ -188,6 +190,9 @@ export class VentasComponent implements OnInit, AfterViewInit {
              console.log("The POST observable is now completed.");
              this.rerenderTable();
          });
+     */
+
+
     }
   }
 

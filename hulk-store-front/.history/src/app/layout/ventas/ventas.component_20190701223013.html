@@ -23,8 +23,7 @@
     </div>
     <div class="modal-body">
         <form>
-            <label style="font-size: 18px; width: 100%; background: #e6e8f3;color: #0f610a; text-align: center;"><i
-                    class="fa fa-shopping-cart"></i> Agregar producto a la cesta</label>
+            <label>Agregar productoa la cesta</label>
             <div class="row">
                 <div class="form-group col-md-6">
                     <label for="">Producto: </label>
@@ -39,18 +38,9 @@
                 </div>
                 <div class="col-md-2" style="padding-top: 6.5%;">
                     <label for=""></label>
-                    <button type="button" class="btn btn-info" (click)="agregarProducto()"><i
-                            class="fa fa-plus"></i></button>
+                    <button type="button" class="btn btn-info" (click)="agregarProducto()"><i class="fa fa-plus"></i></button>
                 </div>
             </div>
-            <div>
-                Productos en la cesta:
-                <ul style="list-style: none; margin: 0; padding: 0;">
-                    <li *ngFor="let pro of listProductToSell" style="background: #6cffb5; padding: 5px;    margin-top: 2px;"><i class="fa fa-shopping-cart"></i> {{pro.name}} - cantidad a vender: {{pro.stock}}
-                    </li>
-                </ul>
-            </div>
-            <hr>
             <div class="form-group ">
                 <label for="exampleInputEmail1">Total Venta:</label>
                 <input type="number" class="form-control" id="txtTotalVenta" [(ngModel)]="totalVenta" name="totalVenta" placeholder="100000" required>
@@ -58,7 +48,12 @@
 
         </form>
 
-
+        <div>
+            Productos en la cesta:
+            <ul style="list-style: none; margin: 0; padding: 0;">
+                <li *ngFor="let pro of listProductToSell" style="background: #6cffb5; padding: 5px;    margin-top: 2px;">{{pro.name}} - cantidad a vender: {{pro.stock}}</li>
+            </ul>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="c('Close click')">Cancelar</button>

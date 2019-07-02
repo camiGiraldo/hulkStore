@@ -127,7 +127,7 @@ export class VentasComponent implements OnInit, AfterViewInit {
           let cellReturn = "";
           for (let i = 0; i < json.length; i++) {
             let p = json[i];
-            cellReturn += `codigo: ${p.id}- Nombre: ${p.name} - Cantidad: ${p.stock} <br>`;
+            cellReturn += `codigo: ${p.id}- Nombre: ${p.name} - Cantidad: ${p.cantidad} <br>`;
           }
           return cellReturn;
 

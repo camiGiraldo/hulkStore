@@ -13,7 +13,7 @@ export class VentasService {
   public url: string;
 
   constructor(private http: HttpClient) {
-    this.url = environment.urlServicesSell;
+    this.url = environment.urlServicesProduct;
   }
   
   /*@method getVentaById
