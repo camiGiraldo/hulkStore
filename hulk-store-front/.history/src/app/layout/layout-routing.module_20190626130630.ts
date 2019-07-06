@@ -8,9 +8,9 @@ const routes: Routes = [
         component: LayoutComponent,
         children: [
             { path: '', redirectTo: 'dashboard' },
-            { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
-            { path: 'facultades', loadChildren: './facultades/facultades.module#FacultadesModule' },
-            { path: 'productos', loadChildren: './productos/productos.module#ProductosModule' },
+            { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
+            { path: 'facultades', loadChildren: () => import('./facultades/facultades.module').then(m => m.FacultadesModule) },
+            { path: 'productos', loadChildren: () => import('./productos/productos.module').then(m => m.ProductosModule) },
         ]
     }
 ];
