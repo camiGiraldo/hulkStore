@@ -11,7 +11,7 @@
 	<groupId>com.spring-boot-angular.hulkstore</groupId>
 	<artifactId>hulkstore</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>discussion-forum</name>
+	<name>hullk-store</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -68,9 +68,12 @@
 		    <artifactId>assertj-core</artifactId>
 		    <scope>test</scope>
 		</dependency>
-		
-		
-		
+	 <dependency>
+	  <groupId>org.json</groupId>
+	  <artifactId>json</artifactId>
+	  <version>20140107</version>
+	  <type>jar</type>
+	 </dependency>
 	</dependencies>
 
 	<build>
