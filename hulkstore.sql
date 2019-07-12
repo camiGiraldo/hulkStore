@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-06-2019 a las 07:14:58
+-- Tiempo de generación: 12-07-2019 a las 16:29:52
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.1.28
 
@@ -25,6 +25,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `category`
+--
+
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(200) DEFAULT NULL,
+  `test_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `category`
+--
+
+INSERT INTO `category` (`id`, `nombre`, `test_id`) VALUES
+(1, 'category 1', 1),
+(2, 'category 2', 2);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `product`
 --
 
@@ -32,17 +52,17 @@ CREATE TABLE `product` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `stock` int(11) NOT NULL,
-  `date_created` date DEFAULT NULL
+  `date_created` date DEFAULT NULL,
+  `category_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `product`
 --
 
-INSERT INTO `product` (`id`, `name`, `stock`, `date_created`) VALUES
-(1, 'batman', 40, '2019-06-27'),
-(2, 'Historieta', 35, '2019-06-27'),
-(3, 'Espada laser', 20, '2019-06-27');
+INSERT INTO `product` (`id`, `name`, `stock`, `date_created`, `category_id`) VALUES
+(6, 'product 1', 10, '2019-07-02', 1),
+(7, 'product 2', 23, '2019-07-10', 2);
 
 -- --------------------------------------------------------
 
@@ -76,13 +96,6 @@ CREATE TABLE `sell` (
   `date_created` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `sell`
---
-
-INSERT INTO `sell` (`id`, `total_sell`, `product_json`, `date_created`) VALUES
-(1, 10000, '[{\"id\":1,\"cantidad\":3,\"name\":\"batman\"},{\"id\":2,\"cantidad\":5,\"name\":\"historia\"}]', '2019-06-27');
-
 -- --------------------------------------------------------
 
 --
@@ -95,6 +108,25 @@ CREATE TABLE `tag` (
   `name` varchar(255) DEFAULT NULL,
   `username` varchar(255) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `test`
+--
+
+CREATE TABLE `test` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `test`
+--
+
+INSERT INTO `test` (`id`, `name`) VALUES
+(1, 'test 1'),
+(2, 'test 2');
 
 -- --------------------------------------------------------
 
@@ -143,10 +175,18 @@ INSERT INTO `user_roles` (`user_id`, `role_id`) VALUES
 --
 
 --
+-- Indices de la tabla `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_category_test_idx` (`test_id`);
+
+--
 -- Indices de la tabla `product`
 --
 ALTER TABLE `product`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_product_category1_idx` (`category_id`);
 
 --
 -- Indices de la tabla `roles`
@@ -165,6 +205,12 @@ ALTER TABLE `sell`
 -- Indices de la tabla `tag`
 --
 ALTER TABLE `tag`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `test`
+--
+ALTER TABLE `test`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -187,10 +233,16 @@ ALTER TABLE `user_roles`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `category`
+--
+ALTER TABLE `category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
@@ -202,7 +254,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `sell`
 --
 ALTER TABLE `sell`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `tag`
@@ -211,10 +263,32 @@ ALTER TABLE `tag`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `test`
+--
+ALTER TABLE `test`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `category`
+--
+ALTER TABLE `category`
+  ADD CONSTRAINT `fk_category_test` FOREIGN KEY (`test_id`) REFERENCES `test` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `product`
+--
+ALTER TABLE `product`
+  ADD CONSTRAINT `fk_product_category1` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

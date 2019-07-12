@@ -15,8 +15,6 @@ import { ProductosService } from './_services/productosService';
 
 import { DataTablesModule } from 'angular-datatables';
 
-import { FormWizardModule } from 'angular-wizard-form';
-
 import {
     ReactiveFormsModule,
     FormsModule
@@ -44,7 +42,6 @@ export function createTranslateLoader(http: HttpClient) {
         HttpModule,
         BrowserModule,
         BrowserAnimationsModule,
-        FormWizardModule,
         HttpClientModule,
         TranslateModule.forRoot({
             loader: {
