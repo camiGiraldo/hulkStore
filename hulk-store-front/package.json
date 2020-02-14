@@ -49,7 +49,7 @@
     "rxjs-compat": "^6.5.2",
     "tslib": "^1.10.0",
     "web-animations-js": "^2.3.2",
-    "yarn": "^1.16.0",
+    "yarn": "^1.22.0",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
